@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import { fetch as fetchog } from 'fetch-opengraph'
+import Card from './Card.astro'
+
+const {id} = Astro.props;
+const data = await fetchog(`https://swoodpartners.medium.com/${id}/`)
+---
+
+<Card>
+  <h3>{data.title}</h3>
+  <Image  src={data['og:image']} alt={data.title} width="600" height="315" />
+</Card>
+
+<style>
+  h3 {
+    margin: 0 0 8px;
+  }
+  img {
+    border-radius: 8px;
+  }
+</style>

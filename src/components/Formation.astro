@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import Card from './Card.astro'
+
+const {id} = Astro.props;
+const data = await fetch(`https://www.udemy.com/api-2.0/courses/${id}/`)
+  .then((res) => res.json())
+  .catch((err) => console.error(err));
+---
+
+<Card>
+  <h3>{data.title}</h3>
+  <Image  src={data.image_240x135} alt={data.title} width="240" height="135" />
+</Card>
+
+<style>
+  h3 {
+    margin: 0 0 8px;
+  }
+  img {
+    border-radius: 8px;
+  }
+</style>

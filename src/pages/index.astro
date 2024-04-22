@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets'
+import { userData } from '../config'
+import profilePicture from '../assets/img/pp.jpg'
+import Layout from '../layouts/Layout.astro'
+import Formation from '../components/Formation.astro'
+import Publication from '../components/Publication.astro'
+---
+
+<Layout title="Welcome to Astro.">
+  <div class="content">
+    <div class="description">
+      <Image
+        src={profilePicture}
+        alt={userData.username}
+        width="200"
+        height="200"
+        class="profile-picture"
+      />
+      <h1>{userData.username}</h1>
+      <h2 style="white-space: break-spaces">{userData.description}</h2>
+    </div>
+    <div class="ressources">
+      {userData.formations.length > 0 ?
+      <h2>Mes formations</h2>
+      <div class="row">
+        {userData.formations.map((formation) => (
+          <Formation id={formation} />
+        ))}
+      </div>
+      : null}
+      {userData.publications.length > 0 ?
+      <h2>Mes publications</h2>
+      <div  class="row">
+        {userData.publications.map((publication) => (
+          <Publication id={publication} />
+        ))}
+      </div>
+      : null}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .content{
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .profile-picture {
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  h2{
+    font-size: 18px;
+    padding: 16px;
+  }
+
+  .description, .ressources{
+    flex: 1
+  }
+
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1260px) {
+    .content {
+      flex-direction: row;
+      padding: 64px 200px;
+    }
+  }
+</style>
