@@ -3,11 +3,22 @@ import { Image } from 'astro:assets'
 import { userData } from '../config'
 import profilePicture from '../assets/img/pp.jpg'
 import Layout from '../layouts/Layout.astro'
-import Formation from '../components/Formation.astro'
-import Publication from '../components/Publication.astro'
+import LinkedIn from '../assets/icon/linkedin.svg'
+import GitHub from '../assets/icon/github.svg'
+
+const getImageFromName = (name: string) => {
+  switch (name) {
+    case 'LinkedIn':
+      return LinkedIn
+    case 'GitHub':
+      return GitHub
+    default:
+      return ''
+  }
+}
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title={userData.username}>
   <div class="content">
     <div class="description">
       <Image
@@ -19,36 +30,45 @@ import Publication from '../components/Publication.astro'
       />
       <h1>{userData.username}</h1>
       <h2 style="white-space: break-spaces">{userData.description}</h2>
+      <div class="socials">
+        {
+          userData.socials.map((social) => (
+            <a href={social.url} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={getImageFromName(social.name)}
+                width={40}
+                height={40}
+                alt={social.name}
+              />
+            </a>
+          ))
+        }
+      </div>
     </div>
     <div class="ressources">
-      {userData.formations.length > 0 ?
-      <h2>Mes formations</h2>
-      <div class="row">
-        {userData.formations.map((formation) => (
-          <Formation id={formation} />
-        ))}
-      </div>
-      : null}
-      {userData.publications.length > 0 ?
-      <h2>Mes publications</h2>
-      <div  class="row">
-        {userData.publications.map((publication) => (
-          <Publication id={publication} />
-        ))}
-      </div>
-      : null}
+      {
+        /*userData.publications.length > 0 ? (
+          <>
+            <h2>Mes publications</h2>
+            <div class="row">
+              {userData.publications.map((publication) => (
+                <Publication id={publication} />
+              ))}
+            </div>
+          </>
+        ) : null*/
+      }
     </div>
   </div>
 </Layout>
 
 <style>
-  .content{
-    height: 100%;
-
+  .content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+    padding: 32px;
   }
 
   .profile-picture {
@@ -56,16 +76,17 @@ import Publication from '../components/Publication.astro'
     margin-bottom: 1rem;
   }
 
-  h2{
+  h2 {
     font-size: 18px;
     padding: 16px;
   }
 
-  .description, .ressources{
-    flex: 1
+  .description,
+  .ressources {
+    flex: 1;
   }
 
-  .row{
+  .row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
