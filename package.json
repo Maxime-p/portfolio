@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.3",
     "@jop-software/astro-matomo": "^1.1.1",
-    "astro": "^4.15.4",
+    "astro": "^4.15.6",
     "fetch-opengraph": "^1.0.36",
     "sass": "^1.78.0",
     "typescript": "^5.6.2"
