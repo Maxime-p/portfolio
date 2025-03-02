@@ -13,13 +13,13 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@jop-software/astro-matomo": "^1.1.1",
-    "astro": "^5.2.3",
+    "astro": "^5.4.1",
     "fetch-opengraph": "^1.0.36",
-    "sass": "^1.83.4",
-    "typescript": "^5.7.3"
+    "sass": "^1.85.1",
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.2",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
