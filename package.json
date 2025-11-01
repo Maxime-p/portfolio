@@ -11,15 +11,15 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.5",
     "@jop-software/astro-matomo": "^1.1.1",
-    "astro": "^5.4.1",
+    "astro": "^5.15.3",
     "fetch-opengraph": "^1.0.36",
-    "sass": "^1.85.1",
-    "typescript": "^5.8.2"
+    "sass": "^1.93.3",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "prettier": "^3.5.2",
+    "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
